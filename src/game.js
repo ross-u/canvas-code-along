@@ -125,9 +125,9 @@ Game.prototype.passGameOverCallback = function(callback) {
 Game.prototype.gameOver = function() {
   // flag `gameIsOver = true` stops the loop
   this.gameIsOver = true;
-  this.onGameOverCallback();
+  
   // Call the gameOver function from `main` to show the Game Over Screen
-  //...
+  this.onGameOverCallback();
 };
 
 Game.prototype.removeGameScreen = function() {

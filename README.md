@@ -22,8 +22,7 @@ touch index.html src/main.js src/game.js src/player.js src/enemy.js css/style.cs
 ```
 
 
-
-
+<br>
 
 
 
@@ -52,6 +51,7 @@ touch index.html src/main.js src/game.js src/player.js src/enemy.js css/style.cs
 </html>
 ```
 
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">3</h2>
@@ -147,8 +147,7 @@ html, body {
 ```
 
 
-
-
+<br>
 
 
 
@@ -210,7 +209,7 @@ window.addEventListener('load', main);
 ```
 
 
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">5</h2>
@@ -219,7 +218,7 @@ Notice that we called the `createSplashScreen` at the end of `main`, therefore l
 
 
 
-
+<br>
 
 
 
@@ -290,7 +289,7 @@ function buildDom(htmlString) {
 ###### By clicking the *Start* button we run the callback that prints 'You clicked Start!'  in the console.
 
 
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">7</h2>
@@ -362,10 +361,7 @@ function buildDom(htmlString) {
 
 
 
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">8</h2>
@@ -400,9 +396,7 @@ function buildDom(htmlString) {
 ###### Now  the *Start* button runs the callback that creates a new screen showing "Lives:" and "Score:"
 
 
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">9</h2>
@@ -446,11 +440,7 @@ Game.prototype.removeGameScreen = function() {};
 ```
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">10</h2>
@@ -477,13 +467,7 @@ function startGame() {
 ```
 
 
-
-
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">11</h2>
@@ -537,15 +521,7 @@ Game.prototype.start = function() {
 ```
 
 
-
-
-
-
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">12</h2>
@@ -572,15 +548,7 @@ function startGame() {
 ```
 
 
-
-
-
-
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">13</h2>
@@ -617,11 +585,7 @@ Player.prototype.draw = function() {};
 ```
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">14</h2>
@@ -699,13 +663,7 @@ Player.prototype.draw = function() {
 ```
 
 
-
-
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">15</h2>
@@ -772,12 +730,7 @@ Game.prototype.start = function() {
 ```
 
 
-
-
-
-
-
-
+<br>
 
 
 
@@ -799,14 +752,7 @@ Game.prototype.start = function() {
 
 
 
-
-
-
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">17</h2>
@@ -837,16 +783,7 @@ Enemy.prototype.isInsideScreen = function() {};
 ```
 
 
-
-
-
-
-
-
-
-
-
-
+<br>
 
 
 
@@ -906,14 +843,7 @@ Enemy.prototype.isInsideScreen = function() {
 ```
 
 
-
-
-
-
-
-
-
-
+<br>
 
 
 
@@ -951,9 +881,7 @@ Game.prototype.startLoop = function() {
 ```
 
 
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">20</h2>
@@ -963,11 +891,7 @@ Game.prototype.startLoop = function() {
 
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">21</h2>
@@ -976,6 +900,7 @@ Game.prototype.startLoop = function() {
 
 
 
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">22</h2>
@@ -1008,8 +933,6 @@ Game.prototype.startLoop = function() {
 
 
 <br>
-
-
 
 
 
@@ -1065,11 +988,7 @@ Game.prototype.startLoop = function() {
 ```
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">24</h2>
@@ -1138,10 +1057,7 @@ Game.prototype.startLoop = function() {
 ```
 
 
-
-
-
-
+<br>
 
 
 
@@ -1152,10 +1068,7 @@ Game.prototype.startLoop = function() {
 
 
 
-
-
-
-
+<br>
 
 
 
@@ -1199,13 +1112,7 @@ Game.prototype.checkCollisions = function() {
 ```
 
 
-
-
-
 <br>
-
-
-
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">27</h2>
@@ -1283,7 +1190,7 @@ Game.prototype.gameOver = function() {
 ```
 
 
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">29</h2>
@@ -1361,9 +1268,7 @@ Game.prototype.gameOver = function() {
 ```
 
 
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">30</h2>
@@ -1384,11 +1289,7 @@ Game.prototype.removeGameScreen = function() {
 ```
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">31</h2>
@@ -1421,11 +1322,7 @@ function createGameOverScreen(score) {
 ```
 
 
-
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">32</h2>
@@ -1470,10 +1367,7 @@ function startGame() {
 
 
 
-
-
-
-
+<br>
 
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">33</h2>
@@ -1539,8 +1433,7 @@ Game.prototype.startLoop = function() {
 ```
 
 
-
-
+<br>
 
 
 
@@ -1585,8 +1478,7 @@ function gameOver(score) {
 ```
 
 
-
-
+<br>
 
 
 

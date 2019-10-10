@@ -3,6 +3,11 @@
 
 
 <br>
+
+
+
+
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">1</h2>
 
 ### Create the project and the file structure
@@ -14,8 +19,6 @@ mkdir eternal_enemies && cd eternal_enemies
 mkdir src css
 
 touch index.html src/main.js src/game.js src/player.js src/enemy.js css/style.css
-
-code .
 ```
 
 
@@ -24,7 +27,6 @@ code .
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">2</h2>
 
 ### Create basic HTML skeleton
@@ -52,7 +54,6 @@ code .
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">3</h2>
 
 ### Add the following CSS styles
@@ -151,7 +152,6 @@ html, body {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">4</h2>
 
 ### Create the functions for building and appending DOM elements 
@@ -213,10 +213,9 @@ window.addEventListener('load', main);
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">5</h2>
 
-Notice that we called the `createSplashScreen` at the end of `main`, therefore lets create that function.
+Notice that we called the `createSplashScreen` at the end of `main`, therefore let's create that function.
 
 
 
@@ -224,16 +223,15 @@ Notice that we called the `createSplashScreen` at the end of `main`, therefore l
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">6</h2>
 
 ### Create functions:
 
-### `buildDom` 
+### `buildDom()` 
 
-### `createSplashScreen` 
+### `createSplashScreen()` 
 
-### `removeSplashScreen`
+### `removeSplashScreen()`
 
 
 
@@ -280,6 +278,7 @@ function buildDom(htmlString) {
 // removeSplashScreen() - inside main()
 
   function removeSplashScreen() {
+    // remove() is the DOM element that removes the Node from the page
     splashScreen.remove();
   };
 ```
@@ -294,7 +293,6 @@ function buildDom(htmlString) {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">7</h2>
 
 ### Create `main.js` functions:
@@ -347,13 +345,12 @@ function buildDom(htmlString) {
   function removeGameScreen() {
     game.removeGameScreen();
   }
-
 ```
 
 
 
 ```js
-// removeGameScreen() - inside main()
+// startGame() - inside main()
 
   function startGame() {
     removeSplashScreen();
@@ -361,7 +358,6 @@ function buildDom(htmlString) {
 
     var gameScreen = createGameScreen();
   }
-
 ```
 
 
@@ -372,10 +368,9 @@ function buildDom(htmlString) {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">8</h2>
 
-### Now we can update `startButton` to  call `startGame` when it is clicked.
+### Now we can update `startButton` to call `startGame` when it is clicked.
 
 
 
@@ -391,33 +386,38 @@ function buildDom(htmlString) {
     //startButton.addEventListener('click', function() {
       //console.log('You clicked Start!');
     //});
+                      
     startButton.addEventListener('click', startGame); // <- UPDATE
   }
-
 ```
 
 
 
 
 
+## **
+
+###### Now  the *Start* button runs the callback that creates a new screen showing "Lives:" and "Score:"
 
 
 
 
 
 
-<br>
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">9</h2>
 
 ### Create a Game constructor 
 
-##### Game constructor is used to create objects that will represent each game played.
+##### `Game` constructor is used to create objects that will represent each game played.
 
 
 
 ##### `game.js`
 
 ```js
+'use strict';
+
 function Game() {
   this.canvas = null;
   this.ctx = null;
@@ -443,7 +443,6 @@ Game.prototype.gameOver = function() {};
 
 Game.prototype.removeGameScreen = function() {};
 
-
 ```
 
 
@@ -454,7 +453,6 @@ Game.prototype.removeGameScreen = function() {};
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">10</h2>
 
 ### Create instance of the `Game` in the `startGame()`
@@ -468,14 +466,14 @@ function startGame() {
   removeSplashScreen();
   // also later we need to add clearing of the gameOverScreen
 
-  //var gameScreen = createGameScreen();
-  game = new Game();						//  <- UPDATE
-  game.gameScreen = createGameScreen();		//  <- UPDATE
+  //var gameScreen = createGameScreen();			<- REMOVE
+  
+  game = new Game();											//  <- UPDATE  ADD
+  game.gameScreen = createGameScreen();		//  <- UPDATE  ADD
 
   // Start the game
   // End the game
 }
-
 ```
 
 
@@ -488,10 +486,19 @@ function startGame() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">11</h2>
 
-### Create the `Game.prototype.start` method
+### Create the `Game.prototype.start` method.
+
+This method will be the initiator of every new game, and does the following :
+
+
+
+-  **saves reference to** the **Lives** and **Score** `.value` `<span>`elements,  for later updates.
+-  **saves the reference to canvas** created by `createGameScreen()` in `main.js`, for use when animating.
+-  **set canvas size** to cover the screen
+- **creates the new player object** for the current game
+- and **starts the rendering loop** which will be running the animation
 
 
 
@@ -527,7 +534,6 @@ Game.prototype.start = function() {
   // Start the canvas requestAnimationFrame loop
   this.startLoop();
 };
-
 ```
 
 
@@ -542,12 +548,11 @@ Game.prototype.start = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">12</h2>
 
 ### Add `game.start()` method
 
-### to the `main.js`  `startGame()`
+### to the `main.js` function `startGame()`
 
 
 
@@ -564,7 +569,6 @@ function startGame() {
   game.start();		//  <-- UPDATE
   // End the game
 }
-
 ```
 
 
@@ -579,7 +583,6 @@ function startGame() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">13</h2>
 
 ### Create the `Player` constructor
@@ -611,7 +614,6 @@ Player.prototype.handleScreenCollision = function() {};
 Player.prototype.removeLife = function() {};
 
 Player.prototype.draw = function() {};
-
 ```
 
 
@@ -622,10 +624,9 @@ Player.prototype.draw = function() {};
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">14</h2>
 
-### Create methods for player:
+### Create methods for the player:
 
 ### `setDirection`  
 
@@ -647,10 +648,11 @@ Player.prototype.setDirection = function(direction) {
   if (direction === 'up') this.direction = -1;
   else if (direction === 'down') this.direction = 1;
 };
-
 ```
 
 
+
+##### `player.js`
 
 ```js
 // handleScreenCollision()
@@ -663,10 +665,11 @@ Player.prototype.handleScreenCollision = function() {
   if (this.y > screenBottom) this.direction = -1;
   else if (this.y < screenTop) this.direction = 1;
 };
-
 ```
 
 
+
+##### `player.js`
 
 ```js
 // removeLife()
@@ -674,10 +677,11 @@ Player.prototype.handleScreenCollision = function() {
 Player.prototype.removeLife = function() {
   this.lives -= 1;
 };
-
 ```
 
 
+
+##### `player.js`
 
 ```js
 // draw()
@@ -692,7 +696,6 @@ Player.prototype.draw = function() {
     this.size,
   );
 };
-
 ```
 
 
@@ -705,20 +708,19 @@ Player.prototype.draw = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">15</h2>
 
 ### Update method in `game.js` - `Game.prototype.start()`
 
 
 
-##### 1. Create Player instance 
+##### 1. Create  `new` `Player` instance .
 
-##### 2. Create `handleKeyDown` function
+##### 2. Create `handleKeyDown` function.
 
-##### 2.  Add event listener, with callback - `handleKeyDown` 
+##### 2.  Add event listener, with callback - `handleKeyDown` .
 
-##### 3.  Bind event callback  `handleKeyDown` 
+##### 3.  Bind event callback  `handleKeyDown` .
 
 
 
@@ -735,7 +737,7 @@ Game.prototype.start = function() {
  
 
   // this.player = {};
-  this.player = new Player();		//	<-- UPDATE
+  this.player = new Player(this.canvas, 3);		//	<-- UPDATE
     
     
   // Event listener callback function
@@ -752,6 +754,8 @@ Game.prototype.start = function() {
   };
     
   // Add event listener for moving the player
+  
+  
   document.body.addEventListener(
       'keydown', 
       this.handleKeyDown.bind(this)
@@ -765,7 +769,6 @@ Game.prototype.start = function() {
   // Start the canvas requestAnimationFrame loop
   this.startLoop();
 };
-
 ```
 
 
@@ -778,7 +781,6 @@ Game.prototype.start = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">16</h2>
 
 ### If we try starting the game, we can press UP and DOWN keys, 
@@ -807,7 +809,6 @@ Game.prototype.start = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">17</h2>
 
 ### Before we create the loop, let's create the last constructor we will need - for the enemy
@@ -833,7 +834,6 @@ Enemy.prototype.draw = function() {};
 Enemy.prototype.updatePosition = function() {};
 
 Enemy.prototype.isInsideScreen = function() {};
-
 ```
 
 
@@ -850,7 +850,6 @@ Enemy.prototype.isInsideScreen = function() {};
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">18</h2>
 
 ### Create the `Enemy` methods :
@@ -878,10 +877,11 @@ Enemy.prototype.draw = function() {
     this.size,
   );
 };
-
 ```
 
 
+
+##### `enemy.js`
 
 ```js
 // updatePosition()
@@ -889,10 +889,11 @@ Enemy.prototype.draw = function() {
 Enemy.prototype.updatePosition = function() {
   this.x = this.x - this.speed;
 };
-
 ```
 
 
+
+##### `enemy.js`
 
 ```js
 // isInsideScreen()
@@ -916,7 +917,6 @@ Enemy.prototype.isInsideScreen = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">19</h2>
 
 ### Let's create the game loop
@@ -939,11 +939,11 @@ Game.prototype.startLoop = function() {
     }
   }.bind(this);
 
-// As loop function will be continuously invoked by
-// the `window` object- `window.requestAnimationFrame(loop)`
-// we have to bind the function so that value of `this` is 
-// pointing to the `game` object, like this:
-// var loop = (function(){}).bind(this);
+	// As loop function will be continuously invoked by
+	// the `window` object- `window.requestAnimationFrame(loop)`
+	// we have to bind the function so that value of `this` is 
+	// pointing to the `game` object, like this:
+	// var loop = (function(){}).bind(this);
 
   window.requestAnimationFrame(loop);
 };
@@ -956,7 +956,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">20</h2>
 
 ### We can now test the loop by checking the `console` in the browser.
@@ -971,7 +970,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">21</h2>
 
 ### Let's line out by using comments `//`, step by step what operations will be happening in the loop.
@@ -980,12 +978,26 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">22</h2>
 
-## `TEAM ACTIVITY`
+## `TEAM ACTIVITY` (15 - 20 min)
 
-#### Separate group in teams and give 10 minutes to come up when will each function be called, to ensure old things are cleared from canvas and new updated player and enemies are rendered on each loop call.
+#### Separate the class in the teams of 4 for the following exercise.
+
+
+
+<br>
+
+
+
+### Task Description: 
+
+- Group should fill up the empty space on the numbered comments, for each step using only words (no code needed).
+- Group should work together and come up with the order of things (sub steps) that need to be done, during each step.
+
+- The purpose of ordering the steps correctly is  *to ensure that old elements are cleared from canvas and new updated player and enemies are rendered on each loop call*.
+
+  
 
 
 
@@ -995,13 +1007,12 @@ Game.prototype.startLoop = function() {
 
 
 
-
-
-
-
-
-
 <br>
+
+
+
+
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">23</h2>
 
 ### Lets now write these comments in our `loop` function
@@ -1061,7 +1072,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">24</h2>
 
 ### Let's now write the code for each comment
@@ -1135,7 +1145,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">25</h2>
 
 #### If we run the game now, we will see that all works fine, except for the collisions (which we didn't implement yet).
@@ -1150,7 +1159,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">26</h2>
 
 ### Implement the `player` and `enemies` collision checking
@@ -1170,6 +1178,7 @@ Game.prototype.checkCollisions = function() {
   
   this.enemies.forEach( function(enemy) {
     
+    // We will implement didCollide() in the next step
     if ( this.player.didCollide(enemy) ) {
 
       this.player.removeLife();
@@ -1193,9 +1202,12 @@ Game.prototype.checkCollisions = function() {
 
 
 
-
-
 <br>
+
+
+
+
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">27</h2>
 
 ### Implement the `didColide()` method in `player.js` checking the player sides for collision.
@@ -1235,11 +1247,16 @@ Player.prototype.didCollide = function(enemy) {
 
 
 
+## **
 
+###### Now when a collision occurs we print the player's `lives` to the  console.
 
 
 
 <br>
+
+
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">28</h2>
 
 ### Implement the `gameOver()` method 
@@ -1254,9 +1271,11 @@ Player.prototype.didCollide = function(enemy) {
 // gameOver()
 
 Game.prototype.gameOver = function() {
+  // flag `gameIsOver = true` stops the loop
   this.gameIsOver = true;
     
   console.log('GAME OVER');
+  
   // Call the gameOver function from `main` to show the Game Over Screen
   //...
 };
@@ -1267,7 +1286,6 @@ Game.prototype.gameOver = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">29</h2>
 
 ### In order to get access to the function from the `main.js` we will pass it as a callback to our `game` object when new game is created.
@@ -1288,9 +1306,7 @@ function startGame() {
 
   game.start();
   // End the game
-  game.passGameOverCallback( function() {		//	<-- UPDATE
-    gameOver();
-  });
+  game.passGameOverCallback(gameOver); 		//	<-- UPDATE
 }
 
 ```
@@ -1302,6 +1318,7 @@ function startGame() {
 
   // -- game over
   function gameOver(score) {
+                      
     removeGameScreen();
     createGameOverScreen();
   }
@@ -1314,9 +1331,41 @@ function startGame() {
 
 
 
+##### `game.js`
+
+```js
+// game.js   passGameOverCallback()
+
+Game.prototype.passGameOverCallback = function(gameOver) {
+  this.onGameOverCallback = gameOver;
+};
+
+```
 
 
-<br>
+
+##### `game.js`
+
+```js
+// game.js   passGameOverCallback()
+
+
+Game.prototype.gameOver = function() {
+  // flag `gameIsOver = true` stops the loop
+  this.gameIsOver = true;
+  
+  // Call the gameOver function from `main` to show the Game Over Screen
+  this.onGameOverCallback();
+};
+
+```
+
+
+
+
+
+
+
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">30</h2>
 
 ### Create the `removeGameScreen()` method in `game.js`, which removes the entire game DOM element
@@ -1329,7 +1378,7 @@ function startGame() {
 //	game.js	 removeGameScreen()
 
 Game.prototype.removeGameScreen = function() {
-  this.gameScreen.remove();
+  this.gameScreen.remove(); // remove() is the DOM method which removes the DOM Node  
 };
 
 ```
@@ -1342,7 +1391,6 @@ Game.prototype.removeGameScreen = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">31</h2>
 
 ### Create a `createGameOverScreen` method and add event listener for restarting and creating a new game
@@ -1380,7 +1428,6 @@ function createGameOverScreen(score) {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">32</h2>
 
 ### If we try to restart the game we will see that Game Over screen is not being removed.
@@ -1395,7 +1442,7 @@ function createGameOverScreen(score) {
 // main.js	removeGameOverScreen()
 
 function removeGameOverScreen() {
-  if (gameOverScreen) {
+  if (gameOverScreen !== undefined) {
     gameOverScreen.remove();
   }
 }
@@ -1429,7 +1476,6 @@ function startGame() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">33</h2>
 
 ### For the end implement the game statuses - `lives` remaining and the `score`.
@@ -1498,7 +1544,6 @@ Game.prototype.startLoop = function() {
 
 
 
-<br>
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">34</h2>
 
 ### Implement the proper score rendering on the Game Over screen
@@ -1545,7 +1590,6 @@ function gameOver(score) {
 
 
 
-<br>
 <h2 style="background-color: green; color: white; display: inline; padding: 10px; border-radius: 10;">THE END</h2>
 
 ### MISSION ACCOMPLISHED! :heavy_check_mark: :thumbsup:

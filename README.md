@@ -14,6 +14,8 @@ mkdir eternal_enemies && cd eternal_enemies
 mkdir src css
 
 touch index.html src/main.js src/game.js src/player.js src/enemy.js css/style.css
+
+code .
 ```
 
 

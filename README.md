@@ -286,7 +286,9 @@ function buildDom(htmlString) {
 
 
 
+## **
 
+###### By clicking the *Start* button we run the callback that prints 'You clicked Start!'  in the console.
 
 
 

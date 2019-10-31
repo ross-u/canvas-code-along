@@ -1105,7 +1105,7 @@ Game.prototype.checkCollisions = function() {
       }
     }
   }, this);
-  // We have to bind `this`
+  // We have to pass `this` value as the second argument
   // as array method callbacks have a default `this` of undefined.
 };
 

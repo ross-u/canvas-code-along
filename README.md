@@ -905,28 +905,7 @@ Game.prototype.startLoop = function() {
 
 <h2 style="background-color: #66D3FA; color: white; display: inline; padding: 10px; border-radius: 10;">22</h2>
 
-## `TEAM ACTIVITY` (15 - 20 min)
-
-#### Separate the class in the teams of 4 for the following exercise.
-
-
-
-<br>
-
-
-
-### Task Description: 
-
-- Group should fill up the empty space on the numbered comments, for each step using only words (no code needed).
-- Group should work together and come up with the order of things (sub steps) that need to be done, during each step.
-
-- The purpose of ordering the steps correctly is  *to ensure that old elements are cleared from canvas and new updated player and enemies are rendered on each loop call*.
-
-  
-
-
-
-### [Team Activity gist with the task](https://gist.github.com/ross-u/6768a8dadceb70198a4bbea1dff4d15c)
+## Step 22 (removed)
 
 
 
